@@ -20,6 +20,10 @@ export class Colonist {
     }
   }
 
+  mineAmount() {
+    return Math.floor(-40 + (this.actionXp()^1.2));
+  }
+
   actionXp() {
     return (45 + (5 * this.level));
   }

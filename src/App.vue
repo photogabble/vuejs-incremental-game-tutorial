@@ -61,7 +61,9 @@
         this.food += amount;
       },
       mineOre: function() {
-        this.ore+=(((10 * this.satisfaction) * this.colonists) * this.mines);
+        for(let i = 0; i < this.colonists; i++) {
+          this.ore += Math.floor((this.colonistsArray[i].mineAmount() * this.satisfaction) * this.mines);
+        }
       },
       gameLoop: function() {
         this.mineOre();

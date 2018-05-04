@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "parcel",
-    "build": "parcel build"
+    "build": "parcel index.html --public-url=./ --out-file=index.html"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@vue/component-compiler-utils": "^1.1.0",
-    "parcel-bundler": "^1.7.1",
+    "parcel-bundler": "^1.8.1",
     "vue-template-compiler": "^2.5.16"
   }
 }

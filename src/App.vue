@@ -13,16 +13,22 @@
 
 <script>
   import Resource from './components/Resource';
+  import {ColonistFactory} from './data/colonist';
   export default {
     name: 'app',
     components: {
       Resource
     },
     data () {
+      let colonists = [];
+      for (let i = 0; i < 12; i++)
+      {
+        colonists[i] = ColonistFactory();
+      }
       return {
         ore: 0,
         mines: 1,
-        colonists: 12,
+        colonistsArray: colonists,
         food: 1800,
         satisfaction: 1.0,
         credits: 1000,
@@ -30,6 +36,11 @@
         foodSell: 6,
         oreBuy: 25,
         oreSell: 8,
+      }
+    },
+    computed: {
+      colonists: function () {
+        return this.colonistsArray.length;
       }
     },
     methods: {
@@ -73,10 +84,15 @@
         }
 
         if (this.satisfaction > 0.6){
-          this.colonists+=1
+          this.colonistsArray.push(ColonistFactory());
         } else if(this.colonists > 0){
+          this.colonistsArray.pop();
+        }
 
-          this.colonists-=1
+        for(let i = 0; i < this.colonists; i++) {
+          this.colonistsArray[i].incrementAge();
+          this.colonistsArray[i].incrementXp();
+          this.colonistsArray[i].incrementLevel();
         }
       }
     },

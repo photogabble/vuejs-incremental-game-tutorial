@@ -1,27 +1,71 @@
-export class Colonist
-{
+export class Colonist {
   constructor(name) {
     this.name = name;
     this.age = 0;
     this.xp = 0;
-    this.skills = {
-      mining: 0,
-      manufacturing: 0,
-      farming: 0,
-      science: 0,
-    };
-    this.inventory = [];
+    this.level = 1;
   }
 
-  incrementAge() {
-    this.age++;
+  incrementAge(i = 1) {
+    this.age += i;
   }
 
   incrementXp() {
-    this.xp++;
+    this.xp += this.actionXp();
   }
 
-  getInventory() {
-    return this.inventory;
+  incrementLevel() {
+    if (this.xp >= this.nextLevelXp) {
+      this.level++;
+    }
   }
+
+  actionXp() {
+    return (45 + (5 * this.level));
+  }
+
+  difficulty() {
+    if (this.level <= 28) {
+      return 0;
+    }
+    if (this.level === 29) {
+      return 1;
+    }
+    if (this.level === 30) {
+      return 3;
+    }
+    if (this.level === 31) {
+      return 6;
+    }
+    if (this.level >= 32) {
+      return 5 * (this.level - 30);
+    }
+  }
+
+  reductionFactor() {
+    if (this.level <= 10) {
+      return 1;
+    }
+    if (this.level >= 11 && this.level <= 27) {
+      return (1-(this.level - 10)/100);
+    }
+    if (this.level >= 28 && this.level <= 59) {
+      return 0.82;
+    }
+    if (this.level > 60) {
+      return 1;
+    }
+  }
+
+  get nextLevelXp() {
+    return ((8 * this.level) + this.difficulty()) * this.actionXp() * this.reductionFactor();
+  }
+}
+
+let colonistCount = 0;
+
+export function ColonistFactory() {
+  let c = new Colonist((colonistCount % 2 ? 'Jane' : 'John') + ' ' + colonistCount);
+  colonistCount++;
+  return c;
 }

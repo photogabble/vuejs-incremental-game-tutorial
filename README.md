@@ -23,3 +23,13 @@ In this part we expand upon the concept of _colonists_ beyond them simply being 
 _Unpublished_: Tutorial | Branch | PR
 
 In this part we work on adding three new buildings: the first of our habitation buildings, the science Lab and a greenhouse. As well as the beginning of the tech tree for research. We will also begin differentiating between colonists and crew, your crew can be hired/fired by the player from a random pool of candidates while colonists are transient in nature and will come and go with the passing of time (depending upon overal satisfaction.)
+
+## Part Four
+_Unpublished_: Tutorial | Branch | PR
+
+In this part we work on the levelling up of buildings and add the Command Center and Silo buildings. With each level the production bonus of the building will increase as will the newly added resource capacity.
+
+## Part Five
+_Unpublished_: Tutorial | Branch | PR
+
+Now that we have a largely working game its about time that it begun looking pretty. In this part we work on the various user interfaces that the player will use to interact with the game and begin to define the game world as a concept.

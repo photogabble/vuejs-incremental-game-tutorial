@@ -1,10 +1,10 @@
-export class Mine
-{
+import {Building} from "./building";
 
+export class Mine extends Building
+{
   constructor ()
   {
-    this.occupants = 0;
-
+    super();
+    this.maxOccupancy = 25;
   }
-
 }
